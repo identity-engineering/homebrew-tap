@@ -2,9 +2,13 @@
 
 Homebrew tap for **Identity Engineering OS** (`ie` CLI).
 
-## Install (token-free Free path)
+## Install
 
-Public artifacts: [ie-os-dist](https://github.com/identity-engineering/ie-os-dist)
+Artifacts are served from **identity-engineering.org** (not private GitHub):
+
+```text
+https://identity-engineering.org/releases/ie-os/0.1.0/ie_os-0.1.0.tar.gz
+```
 
 ```bash
 brew tap identity-engineering/tap
@@ -12,19 +16,8 @@ brew install ie-os
 ie init
 ```
 
-Requires a published `v0.1.0` (or later) asset on **ie-os-dist**.  
-See upstream `docs/release.md` in the private `os` repo for how to cut a release.
-
-## After install
-
-```bash
-ie init
-# path [~/ie], account, preferred name, local_handle
-ie status
-```
+Requires that version’s file to exist on the org domain. See upstream `docs/release.md`.
 
 ## Formula
 
-[`Formula/ie-os.rb`](Formula/ie-os.rb) — Python 3.12 venv, pip-install from public sdist.
-
-After each release: set real `sha256` (drop `:no_check`).
+[`Formula/ie-os.rb`](Formula/ie-os.rb)
