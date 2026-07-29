@@ -4,10 +4,10 @@ Homebrew tap for **Identity Engineering OS** (`ie` CLI).
 
 ## Install
 
-Artifacts are served from **identity-engineering.org** (not private GitHub):
+Public artifacts are served only from the org domain:
 
 ```text
-https://identity-engineering.org/releases/ie-os/0.1.0/ie_os-0.1.0.tar.gz
+https://identity-engineering.org/releases/ie-os/{version}/ie_os-{version}.tar.gz
 ```
 
 ```bash
@@ -16,7 +16,7 @@ brew install ie-os
 ie init
 ```
 
-Requires that version’s file to exist on the org domain. See upstream `docs/release.md`.
+Requires the version file to exist on **identity-engineering.org** (Cloudflare R2 — see os repo issue). No GitHub token for end users.
 
 ## Formula
 
