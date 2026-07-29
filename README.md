@@ -2,61 +2,45 @@
 
 Homebrew tap for **Identity Engineering OS** (`ie` CLI).
 
-## Install
+## Install (target UX)
 
 ```bash
 brew tap identity-engineering/tap
 brew install ie-os
+ie init          # interactive; default path ~/ie — no prior mkdir
 ```
 
-Then create a personal install (data lives outside the formula):
+**Free users must not need a GitHub account or token.**  
+That requires the Formula to install from a **public** package (PyPI or public release archive), not from a private git tarball.
+
+See upstream `docs/distribution.md` in [identity-engineering/os](https://github.com/identity-engineering/os).
+
+## Current status (v0)
+
+The Formula still points at the `os` GitHub source tree for development.
+
+| If `os` is… | What happens |
+|-------------|--------------|
+| **Private** | `brew install` needs `HOMEBREW_GITHUB_API_TOKEN` — **not** acceptable for Free public UX |
+| **Public release / PyPI** | Token-free install — the intended end state |
+
+Next packaging steps:
+
+1. Publish `ie-os` to PyPI (or public GitHub Release assets)
+2. Point `Formula/ie-os.rb` at PyPI / public archive + real `sha256`
+3. Keep private git for day-to-day development if desired
+
+## After install
 
 ```bash
-mkdir -p ~/ie && cd ~/ie
-ie init . --handle your-handle --name "Your Name"
+ie init
+# path [~/ie], handle, name, tier free|pro (pro stub in v0)
 ie status
 ```
 
-Upgrade later:
-
-```bash
-brew update
-brew upgrade ie-os
-```
-
-## What this does / does not do
-
-| Does | Does not |
-|------|----------|
-| Install the `ie` CLI tool system-wide via Homebrew | Store your Stem / Registry / private Mass data |
-| Pull source once during `brew install` (you do not manually `git clone` + `pip install -e`) | Replace a full identity platform |
-
-Your Identity files are created only by `ie init` in a directory you choose (e.g. `~/ie`).
-
-## Private repository note
-
-If `identity-engineering/os` is **private**, Homebrew must authenticate to download the source tarball:
-
-```bash
-# GitHub personal access token with repo read scope
-export HOMEBREW_GITHUB_API_TOKEN=ghp_…
-brew install ie-os
-```
-
-Or use SSH-capable setup / make a public release tarball / publish to PyPI and point the formula at PyPI instead.
-
-For a smooth public install path long-term, preferred order:
-
-1. Merge CLI → tag `v0.1.0` on `os`
-2. Formula `url` + real `sha256` on the tag archive
-3. Optional: publish `ie-os` to PyPI; formula installs from PyPI
-4. Much later: consider `homebrew-core` (stable releases, audit, not a v0 step)
-
-## Formula
-
-- [`Formula/ie-os.rb`](Formula/ie-os.rb) — Python 3.12 venv, `pip install` of the OS package, symlink `ie`
+Identity data stays in the directory you choose — not inside Homebrew’s Cellar as “your Mass”.
 
 ## Related
 
-- Runtime + CLI source: [identity-engineering/os](https://github.com/identity-engineering/os)
-- Docs in os: `docs/cli.md`
+- Source / CLI: [identity-engineering/os](https://github.com/identity-engineering/os)
+- Distribution rules: `docs/distribution.md`
