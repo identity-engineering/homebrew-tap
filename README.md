@@ -2,45 +2,29 @@
 
 Homebrew tap for **Identity Engineering OS** (`ie` CLI).
 
-## Install (target UX)
+## Install (token-free Free path)
+
+Public artifacts: [ie-os-dist](https://github.com/identity-engineering/ie-os-dist)
 
 ```bash
 brew tap identity-engineering/tap
 brew install ie-os
-ie init          # interactive; default path ~/ie — no prior mkdir
+ie init
 ```
 
-**Free users must not need a GitHub account or token.**  
-That requires the Formula to install from a **public** package (PyPI or public release archive), not from a private git tarball.
-
-See upstream `docs/distribution.md` in [identity-engineering/os](https://github.com/identity-engineering/os).
-
-## Current status (v0)
-
-The Formula still points at the `os` GitHub source tree for development.
-
-| If `os` is… | What happens |
-|-------------|--------------|
-| **Private** | `brew install` needs `HOMEBREW_GITHUB_API_TOKEN` — **not** acceptable for Free public UX |
-| **Public release / PyPI** | Token-free install — the intended end state |
-
-Next packaging steps:
-
-1. Publish `ie-os` to PyPI (or public GitHub Release assets)
-2. Point `Formula/ie-os.rb` at PyPI / public archive + real `sha256`
-3. Keep private git for day-to-day development if desired
+Requires a published `v0.1.0` (or later) asset on **ie-os-dist**.  
+See upstream `docs/release.md` in the private `os` repo for how to cut a release.
 
 ## After install
 
 ```bash
 ie init
-# path [~/ie], handle, name, tier free|pro (pro stub in v0)
+# path [~/ie], account, preferred name, local_handle
 ie status
 ```
 
-Identity data stays in the directory you choose — not inside Homebrew’s Cellar as “your Mass”.
+## Formula
 
-## Related
+[`Formula/ie-os.rb`](Formula/ie-os.rb) — Python 3.12 venv, pip-install from public sdist.
 
-- Source / CLI: [identity-engineering/os](https://github.com/identity-engineering/os)
-- Distribution rules: `docs/distribution.md`
+After each release: set real `sha256` (drop `:no_check`).
