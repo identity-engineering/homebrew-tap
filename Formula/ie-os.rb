@@ -9,8 +9,7 @@ class IeOs < Formula
   homepage "https://identity-engineering.org"
   url "https://identity-engineering.org/releases/ie-os/0.1.0/ie_os-0.1.0.tar.gz"
   version "0.1.0"
-  # Set real hash after first file is published on the org domain
-  sha256 :no_check
+  sha256 "b60b46d4b792312a0c8ac258fb7206bdcf309c0d2be611c5acc5feba67a53261"
   license "MIT"
 
   depends_on "python@3.12"
