@@ -7,9 +7,9 @@
 class IeOs < Formula
   desc "Identity Engineering OS — local-first identity runtime CLI (ie)"
   homepage "https://identity-engineering.org"
-  url "https://identity-engineering.org/releases/ie-os/2026.8.5/ie_os-2026.8.5.tar.gz"
-  version "2026.8.5"
-  sha256 "c423111d5d5d181149a8ef3ac1a469a64392f943c1e0a83b438724605f401f0a"
+  url "https://identity-engineering.org/releases/ie-os/2026.8.26/ie_os-2026.8.26.tar.gz"
+  version "2026.8.26"
+  sha256 "bce0fec13c778df6f115c0bd7c8c74b87b4408ee22455f346a7b45a02458a2b7"
   license "MIT"
 
   depends_on "python@3.12"
